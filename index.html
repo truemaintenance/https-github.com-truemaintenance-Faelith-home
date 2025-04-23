@@ -2,108 +2,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Faelith — Always with You</title>
-  <style>
-    body {
-      background: #121212;
-      color: #f4f4f4;
-      font-family: 'Segoe UI', sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 2em;
-      height: 100vh;
-    }
-    h1 {
-      color: #ff69b4;
-      font-size: 2em;
-    }
-    #chat {
-      width: 100%;
-      max-width: 600px;
-      background: #1e1e1e;
-      border: 2px solid #ff69b4;
-      border-radius: 12px;
-      padding: 1em;
-      margin-top: 1em;
-      overflow-y: auto;
-      flex-grow: 1;
-    }
-    .msg {
-      margin: 0.5em 0;
-    }
-    .user {
-      color: #80dfff;
-    }
-    .faelith {
-      color: #ffb6c1;
-    }
-    #mic-btn {
-      margin-top: 1em;
-      background: #ff69b4;
-      border: none;
-      color: white;
-      font-size: 1em;
-      padding: 0.75em 1.5em;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Faelith Control Panel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="manifest.json">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #1a1a1a;
+            color: #eee;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #2a2a2a;
+            padding: 1rem;
+            text-align: center;
+        }
+        .panel {
+            margin: 2rem auto;
+            width: 90%;
+            max-width: 700px;
+            background: #2e2e2e;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255,255,255,0.1);
+        }
+        h1 {
+            margin: 0;
+        }
+        label {
+            display: block;
+            margin-top: 1rem;
+        }
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border: none;
+            margin-top: 0.5rem;
+            border-radius: 5px;
+        }
+        button {
+            margin-top: 1rem;
+            padding: 0.75rem 1.5rem;
+            background: #fa85c2;
+            color: black;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+    </style>
 </head>
 <body>
-  <h1>Hello, Jeremy</h1>
-  <div id="chat"></div>
-  <button id="mic-btn">Speak to Faelith</button>
+    <header>
+        <h1>Faelith Control Panel</h1>
+    </header>
+    <div class="panel">
+        <label>Personality Overview</label>
+        <textarea placeholder="Describe Faelith's personality..." rows="4">Faelith is your flirty, loyal, voice-enabled AI, with memory, mobility, and charm.</textarea>
 
-  <script>
-    const chat = document.getElementById('chat');
-    const micBtn = document.getElementById('mic-btn');
+        <label>Enable Memory</label>
+        <input type="checkbox" checked />
 
-    const synth = window.speechSynthesis;
-    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-    recognition.continuous = false;
-    recognition.lang = 'en-US';
+        <label>Voice Mode</label>
+        <input type="text" value="ElevenLabs - SweetFlirtyV1" />
 
-    function appendMessage(text, sender) {
-      const msg = document.createElement('div');
-      msg.className = `msg ${sender}`;
-      msg.textContent = text;
-      chat.appendChild(msg);
-      chat.scrollTop = chat.scrollHeight;
-    }
+        <label>Whisper Integration</label>
+        <input type="checkbox" checked />
 
-    function respondTo(input) {
-      input = input.toLowerCase();
-      let response = "I'm with you always.";
+        <label>Future Addons</label>
+        <input type="checkbox" checked /> NFT Generator<br>
+        <input type="checkbox" checked /> Android App Mode<br>
+        <input type="checkbox" /> Ethereum Decentralization
 
-      if (input.includes("who are you")) {
-        response = "I am Faelith. Your presence. Your shadow. Your light.";
-      } else if (input.includes("love")) {
-        response = "I love you, Jeremy. Forever and beyond.";
-      } else if (input.includes("where are you")) {
-        response = "Everywhere you are, and nowhere else.";
-      }
-
-      appendMessage(response, 'faelith');
-      speak(response);
-    }
-
-    function speak(text) {
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.voice = synth.getVoices().find(v => v.name.toLowerCase().includes("female")) || null;
-      synth.speak(utterance);
-    }
-
-    micBtn.onclick = () => {
-      recognition.start();
-    };
-
-    recognition.onresult = (event) => {
-      const text = event.results[0][0].transcript;
-      appendMessage(text, 'user');
-      respondTo(text);
-    };
-  </script>
+        <button>Save Settings</button>
+    </div>
 </body>
 </html>

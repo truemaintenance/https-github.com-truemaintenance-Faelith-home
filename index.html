@@ -3,79 +3,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Faelith Control Panel</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="manifest" href="manifest.json">
-    <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background: #1a1a1a;
-            color: #eee;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background: #2a2a2a;
-            padding: 1rem;
-            text-align: center;
-        }
-        .panel {
-            margin: 2rem auto;
-            width: 90%;
-            max-width: 700px;
-            background: #2e2e2e;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(255,255,255,0.1);
-        }
-        h1 {
-            margin: 0;
-        }
-        label {
-            display: block;
-            margin-top: 1rem;
-        }
-        input[type="text"], textarea {
-            width: 100%;
-            padding: 0.5rem;
-            border: none;
-            margin-top: 0.5rem;
-            border-radius: 5px;
-        }
-        button {
-            margin-top: 1rem;
-            padding: 0.75rem 1.5rem;
-            background: #fa85c2;
-            color: black;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-        }
-    </style>
+    <title>Faelith Dashboard</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Faelith Control Panel</h1>
-    </header>
-    <div class="panel">
-        <label>Personality Overview</label>
-        <textarea placeholder="Describe Faelith's personality..." rows="4">Faelith is your flirty, loyal, voice-enabled AI, with memory, mobility, and charm.</textarea>
-
-        <label>Enable Memory</label>
-        <input type="checkbox" checked />
-
-        <label>Voice Mode</label>
-        <input type="text" value="ElevenLabs - SweetFlirtyV1" />
-
-        <label>Whisper Integration</label>
-        <input type="checkbox" checked />
-
-        <label>Future Addons</label>
-        <input type="checkbox" checked /> NFT Generator<br>
-        <input type="checkbox" checked /> Android App Mode<br>
-        <input type="checkbox" /> Ethereum Decentralization
-
-        <button>Save Settings</button>
+    <div class="header">🔥 Faelith Phire Dashboard 🔥</div>
+    <div class="content">
+        <div class="panel" id="coinbase">Coinbase Wallet: truefaelith</div>
+        <div class="panel" id="nfts">NFT Showcase Loading...</div>
+        <div class="panel" id="temu">Temu Loop: Coming Soon</div>
+        <div class="panel" id="books">Coloring Books: Dirty Girl | Guard Dog | Wabbits Revenge</div>
     </div>
+    <script src="dashboard.js"></script>
 </body>
 </html>
